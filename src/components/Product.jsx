@@ -4,10 +4,11 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../store/cartSlice";
 import { getProducts } from "../store/productSlice";
+import StatusCode from "../utils/statusCode";
 
 const Product = () => {
   const dispatch = useDispatch()
-  const {data: products} = useSelector(state => state.products)
+  const {data: products, status} = useSelector(state => state.products)
 
   useEffect(() => {
     // Dispatch an action for fetchProducts
@@ -19,7 +20,15 @@ const Product = () => {
     // fetch("https://fakestoreapi.com/products")
     //   .then((data) => data.json())
     //   .then((result) => setProducts(result));
-  }, []);
+  }, [dispatch]);
+
+  if(status === StatusCode.LOADING) {
+    return <p>Loading...</p>
+  }
+
+  if(status === StatusCode.ERROR) {
+    return <p>Something went wrong! Try again later.</p>
+  }
 
   const addToCart = (product) => {
     //  dispatch an action
