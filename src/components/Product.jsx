@@ -12,8 +12,6 @@ const Product = () => {
       .then((result) => setProducts(result));
   }, []);
 
-  console.log(products);
-
   const cards = products.map((product) => (
     <div key={product.id} className="col-md-3" style={{ marginBottom: "10px" }}>
       <Card style={{ width: "18rem" }} className="h-100 pt-4">
@@ -37,7 +35,7 @@ const Product = () => {
 
   return (
     <>
-      <h1>Product</h1>
+      <h1>Product Dashboard</h1>
       <div className="row">{cards}</div>
     </>
   );
