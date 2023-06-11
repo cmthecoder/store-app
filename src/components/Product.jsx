@@ -37,7 +37,7 @@ const Product = () => {
 
   const cards = products.map((product) => (
     <div key={product.id} className="col-md-3" style={{ marginBottom: "10px" }}>
-      <Card style={{ width: "18rem" }} className="h-100 pt-4">
+      <Card style={{ width: "18rem" }} className="h-100">
         <div className="text-center">
           <Card.Img
             variant="top"
